@@ -71,6 +71,7 @@ public class Pokemon {
         this.nombre = nombre;
     }
 
+    //Se implementará mas adelante
     /*
     public TipoPokemon getTipo() {
         return tipo;
