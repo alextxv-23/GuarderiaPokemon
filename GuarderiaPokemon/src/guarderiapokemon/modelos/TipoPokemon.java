@@ -8,4 +8,4 @@ package guarderiapokemon.modelos;
  *
  * @author Cristian Alex Torres Velásquez
  */
-public enum TipoPokemon {FUEGO, AGUA, PLANTA, TIERRA, ELECTRICO, VOLADOR, HIELO, FANTASMA, VENENO, NINGUNO}
+public enum TipoPokemon {FUEGO, AGUA, PLANTA, TIERRA, ELECTRICO, VOLADOR, HIELO, FANTASMA, VENENO, DOBLE_ELEFANTE_TELEPATA_DE_GUERRA, NINGUNO}

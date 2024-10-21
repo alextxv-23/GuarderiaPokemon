@@ -6,6 +6,7 @@ package guarderiapokemon;
 import guarderiapokemon.modelos.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -18,6 +19,9 @@ public class GuarderiaPokemon {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        // Crear una guardería con un nombre y capacidad de 5 Pokémon
+        Guarderia guarderia = new Guarderia(5, "Guardería Pokémon de Ash");
         
         // Variables para crear un Pokémon.
         String nombre;
@@ -91,9 +95,33 @@ public class GuarderiaPokemon {
         System.out.println("Nivel de pokemon2: " + pokemon2.getNivel());
         System.out.println("Tipo de pokemon3: " + pokemon3.getTipo());
 
-        // Finalizar la entrada de datos.
-        sc.close(); 
         
+        // Agregar el Pokémon a la guardería
+        guarderia.agregarPokemon(pokemon3);
+
+        // Opciones adicionales de interacción
+        System.out.println("¿Deseas entrenar al Pokémon? (sí/no)");
+        String opcion = sc.next();
+        if (opcion.equalsIgnoreCase("sí")) {
+            System.out.println("¿Cuánta experiencia ha ganado?");
+            int experienciaGanada = sc.nextInt();
+            guarderia.entrenarPokemon(pokemon3, experienciaGanada);
+        }
+
+        System.out.println("¿Deseas alimentar al Pokémon? (sí/no)");
+        opcion = sc.next();
+        if (opcion.equalsIgnoreCase("sí")) {
+            System.out.println("¿Cuántos puntos de vida quieres restaurar?");
+            int cantidadVida = sc.nextInt();
+            guarderia.alimentarPokemon(pokemon3, cantidadVida);
+        }
+
+        // Listar los Pokémon en la guardería
+        guarderia.listarPokemones();
+        
+        
+        // Finalizar la entrada de datos.
+        sc.close();
     }
     
 }

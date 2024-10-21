@@ -4,7 +4,7 @@
  */
 package guarderiapokemon.modelos;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  *
@@ -18,6 +18,7 @@ public class Pokemon {
     public static final String NOMBRE= "";
     public static final int EXPERIENCIA = 0;
     public static final String TIPO = "NINGUNO";
+    //public static final TipoPokemon TIPOPOKEMON = TipoPokemon.NINGUNO;
     public static final int NIVEL = 1;
     public static final int EXPERIENCIASIGUIENTENIVEL = 100;
     public static final int PUNTOSVIDA = 1;
@@ -32,10 +33,10 @@ public class Pokemon {
     private int puntosVida;
     private int vidaMaxima;
     private boolean esEvolucionado;
-    private ArrayList<String> movimientos;
-    private ArrayList<String> formasEvolucionadas;
+    private List<String> movimientos = new ArrayList<>();
+    private List<String> formasEvolucionadas = new ArrayList<>();
 
-    public Pokemon(String nombre, String tipo, int experiencia, int nivel, int experienciaSiguienteNivel, int puntosVida, int vidaMaxima, boolean esEvolucionado, ArrayList<String> movimientos, ArrayList<String> formasEvolucionadas) {
+    public Pokemon(String nombre, String tipo, int experiencia, int nivel, int experienciaSiguienteNivel, int puntosVida, int vidaMaxima, boolean esEvolucionado, List<String> movimientos, List<String> formasEvolucionadas) {
         this.nombre = nombre;
         this.tipo = tipo;
         this.experiencia = experiencia;
@@ -138,7 +139,7 @@ public class Pokemon {
         this.esEvolucionado = esEvolucionado;
     }
 
-    public ArrayList<String> getMovimientos() {
+    public List<String> getMovimientos() {
         return movimientos;
     }
 
@@ -146,7 +147,7 @@ public class Pokemon {
         this.movimientos = movimientos;
     }
 
-    public ArrayList<String> getFormasEvolucionadas() {
+    public List<String> getFormasEvolucionadas() {
         return formasEvolucionadas;
     }
 
@@ -157,6 +158,24 @@ public class Pokemon {
     @Override
     public String toString() {
         return "Pokemon{" + "nombre=" + nombre + ", tipo=" + tipo + ", experiencia=" + experiencia + ", nivel=" + nivel + ", experienciaSiguienteNivel=" + experienciaSiguienteNivel + ", puntosVida=" + puntosVida + ", vidaMaxima=" + vidaMaxima + ", esEvolucionado=" + esEvolucionado + ", moves=" + movimientos + ", formasEvolucionadas=" + formasEvolucionadas + '}';
+    }
+    
+    public void subirNivel() {
+        // Comprobamos si el Pokémon ha ganado suficiente experiencia para subir de nivel
+        while (this.experiencia >= this.experienciaSiguienteNivel) {
+            this.experiencia -= this.experienciaSiguienteNivel;
+
+            this.nivel++;
+            System.out.println(this.nombre + " ha subido al nivel " + this.nivel + "!");
+
+            this.vidaMaxima += 10; 
+            this.puntosVida = this.vidaMaxima;
+
+            this.experienciaSiguienteNivel += 50;
+
+            //IMPLEMENTAR MAS ADELANTE METODO EVOLUCIONAR
+            //evolucionar();
+        }
     }
     
 }
